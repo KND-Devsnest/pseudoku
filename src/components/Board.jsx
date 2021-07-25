@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Box from "./Box";
 import style from "../styles/Board.module.css";
 import { BoardContext } from "./BoardContext";
+import { GlobalContext } from "./GlobalContext";
 
 const Board = () => {
+
+  const {state, dispatch} = useContext(GlobalContext)
+  const boardRef = useRef();
+  useEffect(()=>{dispatch({type:'SET_BOARDREF', value:boardRef})}, [boardRef, dispatch]);
   const solution = [
     [9, 7, 5, 8, 3, 1, 6, 4, 2],
     [3, 4, 8, 2, 6, 7, 1, 9, 5],
@@ -50,7 +55,7 @@ const Board = () => {
   // console.log(puzzle);
   const [isSelected, setSelected] = useState(false);
   return (
-    <div className={style["sudoku-board"]}>
+    <div ref={boardRef} className={style["sudoku-board"]}>
       <BoardContext.Provider
         value={{ isSelected, setSelected, solution, puzzle }}
       >

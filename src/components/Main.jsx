@@ -3,17 +3,17 @@ import Board from "./Board";
 import style from "../styles/Main.module.css";
 import Keypad from "./Keypad";
 import Toolbox from "./Toolbox";
-import { GlobalContext } from "./GlobalContext";
+import { GlobalProvider } from "./GlobalContext";
 const Main = () => {
   return (
     <div className={style.main}>
-      <GlobalContext.Provider>
+      <GlobalProvider>
         <Board />
         <div className={style.sidebar}>
           <Toolbox />
           <Keypad />
         </div>
-      </GlobalContext.Provider>
+      </GlobalProvider>
     </div>
   );
 };

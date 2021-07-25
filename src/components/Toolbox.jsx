@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "../styles/Toolbox.module.css";
+import { GlobalContext } from "./GlobalContext";
 const Toolbox = () => {
   const btnpressed = (x) => {
     console.log(x);
   };
+  const {state, dispatch} = useContext(GlobalContext);
   return (
     <div className={style.toolbox}>
       <div
