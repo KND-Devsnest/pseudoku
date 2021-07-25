@@ -7,6 +7,8 @@ const Keypad = () => {
     // HERE you will get what number is pressed on the Keypad!!
     console.log(x);
     setNumber(x);
+    // replace document with the board div
+    document.dispatchEvent(new KeyboardEvent('keypress',{key:x + ''}))
   };
   let btns = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
