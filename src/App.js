@@ -1,15 +1,13 @@
-
-import './App.css';
-import Board from './components/Board';
-
+import Board from "./components/Board";
+import About from "./components/Howtoplay";
 
 const App = () => {
-  
   return (
     <div className="App">
-     <Board />
+      <Board />
+      <About />
     </div>
   );
-}
+};
 
 export default App;

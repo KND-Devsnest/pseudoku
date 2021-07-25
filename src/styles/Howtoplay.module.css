@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+}
+.wrapper h1 {
+  padding-left: 35%;
+}
+.howtoplay {
+  display: flex;
+}
+.rulewrapper {
+  flex: 1;
+  width: fit-content;
+  font-size: 1.2em;
+  padding-top: 2em;
+  padding-left: 10em;
+  cursor: pointer;
+}
+.rulewrapper p {
+  padding-bottom: 0.6em;
+}
+.rulewrapper p:active {
+  color: rgb(94, 94, 94);
+  transition-delay: 0.8ms;
+}
+.contentwrapper {
+  width: fit-content;
+  height: fit-content;
+  padding-top: 2em;
+  flex: 1;
+  padding-right: 10em;
+  font-size: 1em;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
