@@ -4,6 +4,7 @@ import style from "../styles/Board.module.css";
 import { BoardContext } from "./BoardContext";
 import { GlobalContext } from "./GlobalContext";
 
+import { divideGrid } from "../utils/divideGrid";
 const Board = () => {
 
   const {state, dispatch} = useContext(GlobalContext)
@@ -32,27 +33,7 @@ const Board = () => {
     [0, 0, 0, 0, 2, 5, 7, 0, 9],
     [5, 0, 7, 6, 0, 0, 4, 0, 0],
   ]);
-  function divideGrid(i, j) {
-    if (i === 0 && j > 0 && j < 8) {
-      return { borderTop: "0.25rem solid black" };
-    } else if (i === 0 && j === 0) {
-      return {
-        borderTop: "0.25rem solid black",
-        borderLeft: "0.25rem solid black",
-      };
-    } else if (i === 0 && j === 8) {
-      return {
-        borderTop: "0.25rem solid black",
-        borderRight: "0.25rem solid black",
-      };
-    } else if (i < 8 && j === 0) {
-      return {
-        borderLeft: "0.25rem solid black",
-      };
-    }
-    // else if ()
-  }
-  // console.log(puzzle);
+
   const [isSelected, setSelected] = useState(false);
   return (
     <div ref={boardRef} className={style["sudoku-board"]}>
