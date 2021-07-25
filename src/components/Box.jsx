@@ -35,7 +35,7 @@ const Box = ({ id, value, setValue }) => {
     }
     isBoxSafe();
     console.log(puzzle);
-  });
+  }, [value, i, j, puzzle, isSelected]);
   if (isSelected.i === i || isSelected.j === j || isSelected.value === value) {
     classListHover = [style.inputbox, style.correct];
     classListWrong = [style.inputbox, style.incorrect, style.correct];
