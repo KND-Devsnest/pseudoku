@@ -16,6 +16,8 @@ export const divideGrid = (i, j) => {
       return {
         borderBottom: "0.25rem solid var(--dark)",
       };
+    default:
+      break;
   }
   switch (j) {
     case 2:
@@ -23,5 +25,7 @@ export const divideGrid = (i, j) => {
       return {
         borderRight: "0.25rem solid var(--dark)",
       };
+    default:
+      break;
   }
 };
