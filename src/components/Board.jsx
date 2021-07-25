@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Box from "./Box";
 import style from "../styles/Board.module.css";
 import { BoardContext } from "./BoardContext";
-
+import { divideGrid } from "../utils/divideGrid";
 const Board = () => {
   const solution = [
     [9, 7, 5, 8, 3, 1, 6, 4, 2],
@@ -27,36 +27,7 @@ const Board = () => {
     [0, 0, 0, 0, 2, 5, 7, 0, 9],
     [5, 0, 7, 6, 0, 0, 4, 0, 0],
   ]);
-  function divideGrid(i, j) {
-    if (
-      (i === 2 && j === 2) ||
-      (i === 5 && j === 5) ||
-      (i === 2 && j === 5) ||
-      (i === 5 && j === 2)
-    ) {
-      return {
-        borderBottom: "0.25rem solid black",
-        borderRight: "0.25rem solid black",
-      };
-    }
-    switch (i) {
-      case 2:
-      case 5:
-        return {
-          borderBottom: "0.25rem solid black",
-        };
-    }
-    switch (j) {
-      case 2:
-      case 5:
-        return {
-          borderRight: "0.25rem solid black",
-        };
-    }
-  }
-  // else if ()
 
-  // console.log(puzzle);
   const [isSelected, setSelected] = useState(false);
   return (
     <div className={style["sudoku-board"]}>
