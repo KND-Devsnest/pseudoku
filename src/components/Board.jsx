@@ -27,12 +27,33 @@ const Board = () => {
     [0, 0, 0, 0, 2, 5, 7, 0, 9],
     [5, 0, 7, 6, 0, 0, 4, 0, 0],
   ]);
-
+  function divideGrid(i, j) {
+    if (i === 0 && j > 0 && j < 8) {
+      return { borderTop: "0.25rem solid black" };
+    } else if (i === 0 && j === 0) {
+      return {
+        borderTop: "0.25rem solid black",
+        borderLeft: "0.25rem solid black",
+      };
+    } else if (i === 0 && j === 8) {
+      return {
+        borderTop: "0.25rem solid black",
+        borderRight: "0.25rem solid black",
+      };
+    } else if (i < 8 && j === 0) {
+      return {
+        borderLeft: "0.25rem solid black",
+      };
+    }
+    // else if ()
+  }
   // console.log(puzzle);
   const [isSelected, setSelected] = useState(false);
   return (
     <div className={style["sudoku-board"]}>
-      <BoardContext.Provider value={{ isSelected, setSelected, solution,puzzle }}>
+      <BoardContext.Provider
+        value={{ isSelected, setSelected, solution, puzzle }}
+      >
         {puzzle.map((el, i) => {
           return el.map((value, j) => {
             return (
@@ -40,6 +61,7 @@ const Board = () => {
                 key={`${i} ${j}`}
                 id={`${i} ${j}`}
                 value={puzzle[i][j]}
+                divideGrid={divideGrid}
                 setValue={(value) => {
                   setPuzzle((prevP) => {
                     prevP[i][j] = value;

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import style from "../styles/Box.module.css";
 import { BoardContext } from "./BoardContext";
-const Box = ({ id, value, setValue }) => {
+const Box = ({ id, value, setValue, divideGrid }) => {
   const { solution, isSelected, setSelected, puzzle } =
     useContext(BoardContext);
   const [isWrong, setWrong] = useState(false);
@@ -51,6 +51,7 @@ const Box = ({ id, value, setValue }) => {
           maxLength={1}
           type="number"
           value={value > 0 ? value : ""}
+          style={divideGrid(i, j)}
           onKeyPress={(e) => {
             if (
               (e.which !== 8 && e.which !== 0 && e.which < 48) ||
