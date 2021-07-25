@@ -10,3 +10,7 @@
   justify-items: center;
   background-color: white;
 }
+
+.disabled {
+  pointer-events: none;
+}

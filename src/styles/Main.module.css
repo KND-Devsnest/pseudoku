@@ -20,10 +20,6 @@
   font-size: large;
 }
 
-.disabled {
-  pointer-events: none;
-}
-
 @media only screen and (max-width: 768px) {
   .main {
     /* border: 1px solid red; */
