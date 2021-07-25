@@ -3,19 +3,24 @@
 }
 .wrapper {
   min-height: 60vh;
+  margin-bottom: 1.5rem;
 }
 .wrapper h1 {
-  padding-left: 35%;
+  text-align: center;
 }
 .howtoplay {
   display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
 }
 .rulewrapper {
   flex: 1;
   width: fit-content;
   font-size: 1.2em;
   padding-top: 2em;
-  padding-left: 10em;
+  margin: 0 auto;
+  padding-right: 2em;
   cursor: pointer;
 }
 .rulewrapper p {
@@ -29,14 +34,20 @@
   width: fit-content;
   height: fit-content;
   padding-top: 2em;
+  padding-left: 2em;
   flex: 1;
-  padding-right: 10em;
+  margin: 0 auto;
   font-size: 1em;
   animation: fadeIn 3s;
   -webkit-animation: fadeIn 3s;
   -moz-animation: fadeIn 3s;
   -o-animation: fadeIn 3s;
   -ms-animation: fadeIn 3s;
+}
+@media only screen and (max-width: 768px) {
+  .howtoplay {
+    width: 80%;
+  }
 }
 @keyframes fadeIn {
   0% {
