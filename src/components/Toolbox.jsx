@@ -2,26 +2,32 @@ import React, { useContext } from "react";
 import style from "../styles/Toolbox.module.css";
 import { GlobalContext } from "./GlobalContext";
 const Toolbox = ({ stopwatch }) => {
-  const { state } = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
   const btnpressed = (x) => {
     //console.log(x);
     switch (x) {
       case "start":
         stopwatch.start();
+        dispatch({ type: "SET_HAS_STARTED", value: true });
         break;
       case "pause":
         stopwatch.pause();
+        dispatch({ type: "SET_IS_PAUSED", value: true });
         break;
       case "resume":
         stopwatch.resume();
+        dispatch({ type: "SET_IS_PAUSED", value: false });
         break;
       case "undo":
+        if (!state.hasStarted || state.isPaused) return;
         if (state.undoPuzzle) state.undoPuzzle();
         break;
       case "reset":
+        if (!state.hasStarted || state.isPaused) return;
         if (state.resetPuzzle) state.resetPuzzle();
         break;
       case "hint":
+        if (!state.hasStarted || state.isPaused) return;
         break;
       default:
         break;
@@ -34,7 +40,7 @@ const Toolbox = ({ stopwatch }) => {
           btnpressed(
             stopwatch.isStopwatchRunning
               ? "pause"
-              : stopwatch.time > 0
+              : state.hasStarted
               ? "resume"
               : "start"
           );
@@ -44,7 +50,7 @@ const Toolbox = ({ stopwatch }) => {
         <h1>
           {stopwatch.isStopwatchRunning
             ? "Pause"
-            : stopwatch.time > 0
+            : state.hasStarted
             ? "Resume"
             : "Start"}
         </h1>
