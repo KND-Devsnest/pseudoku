@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "../styles/Toolbox.module.css";
+import { GlobalContext } from "./GlobalContext";
 import useStopwatch from "./useStopwatch";
-
-
 const Toolbox = () => {
 
   const stopwatch = useStopwatch();
@@ -29,7 +28,7 @@ const Toolbox = () => {
         break;
     }
   };
-
+  const {state, dispatch} = useContext(GlobalContext);
   return (
     <div className={style.toolbox}>
       <div className={style.stopwatch}>

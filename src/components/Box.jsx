@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import style from "../styles/Box.module.css";
 import { BoardContext } from "./BoardContext";
-const Box = ({ id, value, setValue }) => {
+const Box = ({ id, value, setValue, divideGrid }) => {
   const { solution, isSelected, setSelected, puzzle } =
     useContext(BoardContext);
   const [isWrong, setWrong] = useState(false);
@@ -35,7 +35,7 @@ const Box = ({ id, value, setValue }) => {
     }
     isBoxSafe();
     console.log(puzzle);
-  });
+  }, [value, i, j, puzzle, isSelected]);
   if (isSelected.i === i || isSelected.j === j || isSelected.value === value) {
     classListHover = [style.inputbox, style.correct];
     classListWrong = [style.inputbox, style.incorrect, style.correct];
@@ -51,6 +51,7 @@ const Box = ({ id, value, setValue }) => {
           maxLength={1}
           type="number"
           value={value > 0 ? value : ""}
+          style={divideGrid(i, j)}
           onKeyPress={(e) => {
             if (
               (e.which !== 8 && e.which !== 0 && e.which < 48) ||

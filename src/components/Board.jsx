@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Box from "./Box";
 import style from "../styles/Board.module.css";
 import { BoardContext } from "./BoardContext";
+import { GlobalContext } from "./GlobalContext";
 
+import { divideGrid } from "../utils/divideGrid";
 const Board = () => {
+
+  const {state, dispatch} = useContext(GlobalContext)
+  const boardRef = useRef();
+  useEffect(()=>{dispatch({type:'SET_BOARDREF', value:boardRef})}, [boardRef, dispatch]);
   const solution = [
     [9, 7, 5, 8, 3, 1, 6, 4, 2],
     [3, 4, 8, 2, 6, 7, 1, 9, 5],
@@ -28,11 +34,12 @@ const Board = () => {
     [5, 0, 7, 6, 0, 0, 4, 0, 0],
   ]);
 
-  // console.log(puzzle);
   const [isSelected, setSelected] = useState(false);
   return (
-    <div className={style["sudoku-board"]}>
-      <BoardContext.Provider value={{ isSelected, setSelected, solution,puzzle }}>
+    <div ref={boardRef} className={style["sudoku-board"]}>
+      <BoardContext.Provider
+        value={{ isSelected, setSelected, solution, puzzle }}
+      >
         {puzzle.map((el, i) => {
           return el.map((value, j) => {
             return (
@@ -40,6 +47,7 @@ const Board = () => {
                 key={`${i} ${j}`}
                 id={`${i} ${j}`}
                 value={puzzle[i][j]}
+                divideGrid={divideGrid}
                 setValue={(value) => {
                   setPuzzle((prevP) => {
                     prevP[i][j] = value;
