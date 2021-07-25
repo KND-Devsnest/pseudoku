@@ -1,0 +1,19 @@
+.footer {
+  background-color: var(--darker);
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.leftbox {
+  width: 40%;
+  color: white;
+  font-size: 1em;
+}
+.leftbox a {
+  text-decoration: none;
+  transition: ease 0.2s;
+  color: var(--blue);
+  cursor: pointer;
+}

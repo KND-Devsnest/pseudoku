@@ -4,11 +4,14 @@ const Box = ({ value, setValue }) => {
   return (
     <div className={style.box}>
       {value !== 0 ? (
-        value
+        <div>{value}</div>
       ) : (
         <input
-          className={style.inputbox}
-          type="number"
+          className={`${style.inputbox}`}
+          type="text"
+          min="1"
+          max="9"
+          maxLength="1"
           onChange={(e) => {
             setValue(parseInt(e.target.value));
           }}

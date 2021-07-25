@@ -4,4 +4,9 @@
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  user-select: none;
+  align-items: center;
+  justify-items: center;
+  background-color: white;
 }

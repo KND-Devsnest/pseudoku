@@ -1,0 +1,56 @@
+.toolbox {
+  width: fit-content;
+  height: 8.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  cursor: pointer;
+}
+
+.misc {
+  width: 12.2em;
+  height: 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cta {
+  width: 4em;
+  height: 4em;
+  background-color: var(--dark);
+  border-radius: 0.2em;
+  color: white;
+  display: grid;
+  place-items: center;
+  transition: ease 0.2s;
+}
+.cta:active {
+  transform: scale(0.98);
+}
+
+.cta:hover {
+  color: var(--blue);
+}
+.startbtn {
+  width: 12.2em;
+  height: 4em;
+  background-color: var(--blue);
+  font-size: 1em;
+}
+.startbtn:hover {
+  color: var(--dark);
+}
+
+@media only screen and (max-width: 768px) {
+  .cta {
+    width: 2.5em;
+    height: 2.5em;
+  }
+  .misc {
+    width: 8em;
+  }
+  .startbtn {
+    width: 8em;
+  }
+}
