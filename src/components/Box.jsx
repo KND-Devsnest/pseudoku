@@ -38,6 +38,7 @@ const Box = ({ id, value, setValue }) => {
   });
   if (isSelected.i === i || isSelected.j === j || isSelected.value === value) {
     classListHover = [style.inputbox, style.correct];
+    classListWrong = [style.inputbox, style.incorrect, style.correct];
   }
 
   return (
