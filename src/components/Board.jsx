@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Box from "./Box";
 import style from "../styles/Board.module.css";
+import { BoardContext } from "./BoardContext";
 
 const Board = () => {
   const solution = [
@@ -27,25 +28,30 @@ const Board = () => {
     [5, 0, 7, 6, 0, 0, 4, 0, 0],
   ]);
 
-  console.log(puzzle);
+  // console.log(puzzle);
+  const [isSelected, setSelected] = useState(false);
   return (
     <div className={style["sudoku-board"]}>
-      {puzzle.map((el, i) => {
-        return el.map((value, j) => {
-          return (
-            <Box
-              key={`${i} ${j}`}
-              value={puzzle[i][j]}
-              setValue={(value) => {
-                setPuzzle((prevP) => {
-                  prevP[i][j] = value;
-                  return prevP;
-                });
-              }}
-            />
-          );
-        });
-      })}
+      <BoardContext.Provider value={{ isSelected, setSelected, solution,puzzle }}>
+        {puzzle.map((el, i) => {
+          return el.map((value, j) => {
+            return (
+              <Box
+                key={`${i} ${j}`}
+                id={`${i} ${j}`}
+                value={puzzle[i][j]}
+                setValue={(value) => {
+                  setPuzzle((prevP) => {
+                    prevP[i][j] = value;
+                    console.log(prevP);
+                    return prevP;
+                  });
+                }}
+              />
+            );
+          });
+        })}
+      </BoardContext.Provider>
 
       {/* <button onClick={()=>console.log(puzzle)}>Click</button> */}
     </div>
