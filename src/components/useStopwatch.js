@@ -4,24 +4,29 @@ import { useState } from "react"
 const useStopwatch = () => {
     const [time, setTime] = useState(0);
     const [intervalId, setIntervalId] = useState(null);
+    const [isStopwatchRunning, setIsStopwatchRunning] = useState(false);
 
     const start = () => {
         setTime(0);
+        setIsStopwatchRunning(true);
         setIntervalId(setInterval(() => {
             setTime(pTime => pTime += 1)
         },1000));
     }
 
     const stop = () => {
+        setIsStopwatchRunning(false);
         clearInterval(intervalId);
 
     }
 
     const pause = () => {
+        setIsStopwatchRunning(false);
         clearInterval(intervalId);
     }
 
     const resume = () => {
+        setIsStopwatchRunning(true);
         setIntervalId(setInterval(() => {
             setTime(pTime => pTime += 1)
         },1000));
@@ -38,7 +43,7 @@ const useStopwatch = () => {
         return hDisplay + ":" + mDisplay + ":" + sDisplay;
     }
 
-    return {time, start, stop, pause, resume, getInHours};
+    return {time, start, stop, pause, resume, getInHours, isStopwatchRunning};
 }
 
 export default useStopwatch;
