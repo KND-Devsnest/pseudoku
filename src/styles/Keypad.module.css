@@ -1,0 +1,36 @@
+.keypad {
+  width: fit-content;
+  height: fit-content;
+  display: grid;
+  row-gap: 0.1em;
+  column-gap: 0.1em;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.btn {
+  width: 4em;
+  height: 4em;
+  color: white;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--dark);
+  transition: ease 0.2s;
+  border-radius: 0.2em;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:hover {
+  color: var(--blue);
+}
+
+@media only screen and (max-width: 768px) {
+  .btn {
+    width: 3em;
+    height: 3em;
+  }
+}
