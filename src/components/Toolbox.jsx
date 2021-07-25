@@ -1,29 +1,27 @@
 import React, { useContext } from "react";
 import style from "../styles/Toolbox.module.css";
 import { GlobalContext } from "./GlobalContext";
-const Toolbox = ({stopwatch}) => {
-
-  const {state} = useContext(GlobalContext);
+const Toolbox = ({ stopwatch }) => {
+  const { state } = useContext(GlobalContext);
   const btnpressed = (x) => {
     //console.log(x);
-    switch(x){
-      case 'start':
+    switch (x) {
+      case "start":
         stopwatch.start();
         break;
-      case 'pause':
+      case "pause":
         stopwatch.pause();
-        break
-      case 'resume':
+        break;
+      case "resume":
         stopwatch.resume();
         break;
-      case 'undo':
-
-        break
-      case 'reset':
-        if(state.resetPuzzle) state.resetPuzzle();
-        break
-      case 'hint':
-
+      case "undo":
+        if (state.undoPuzzle) state.undoPuzzle();
+        break;
+      case "reset":
+        if (state.resetPuzzle) state.resetPuzzle();
+        break;
+      case "hint":
         break;
       default:
         break;
@@ -33,11 +31,23 @@ const Toolbox = ({stopwatch}) => {
     <div className={style.toolbox}>
       <div
         onClick={(e) => {
-          btnpressed(stopwatch.isStopwatchRunning? "pause" : (stopwatch.time > 0 ? "resume" : "start"));
+          btnpressed(
+            stopwatch.isStopwatchRunning
+              ? "pause"
+              : stopwatch.time > 0
+              ? "resume"
+              : "start"
+          );
         }}
         className={`${style.startbtn} ${style.cta} `}
       >
-        <h1>{stopwatch.isStopwatchRunning ? "Pause" : (stopwatch.time > 0 ? "Resume" : "Start")}</h1>
+        <h1>
+          {stopwatch.isStopwatchRunning
+            ? "Pause"
+            : stopwatch.time > 0
+            ? "Resume"
+            : "Start"}
+        </h1>
       </div>
       <div className={style.misc}>
         <div

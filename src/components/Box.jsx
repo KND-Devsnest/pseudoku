@@ -73,7 +73,7 @@ const Box = ({ id, value, setValue, divideGrid }) => {
             let pval = Math.floor((e.target.value % 100) / 10);
 
             if (!isNaN(val) && val > 0 && val !== pval) {
-              setValue(parseInt(val));
+              setValue(parseInt(val), pval);
               e.target.value = val;
             } else {
               e.target.value = "";
