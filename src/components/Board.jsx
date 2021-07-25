@@ -6,7 +6,8 @@ import { GlobalContext } from "./GlobalContext";
 import { divideGrid } from "../utils/divideGrid";
 
 const Board = ({ randomElement }) => {
-  const { dispatch } = useContext(GlobalContext);
+  const { dispatch, state } = useContext(GlobalContext);
+  const { hasStarted, isPaused } = state;
   const boardRef = useRef();
   // useEffect(() => {
   //   dispatch({ type: "SET_BOARDREF", value: boardRef });
@@ -45,7 +46,12 @@ const Board = ({ randomElement }) => {
 
   //console.log(puzzle);
   return (
-    <div ref={boardRef} className={style["sudoku-board"]}>
+    <div
+      ref={boardRef}
+      className={`${style["sudoku-board"]} ${
+        hasStarted && !isPaused ? null : `${style.disabled}`
+      }`}
+    >
       <BoardContext.Provider
         value={{ isSelected, setSelected, solution, puzzle }}
       >
@@ -74,6 +80,19 @@ const Board = ({ randomElement }) => {
       </BoardContext.Provider>
 
       {/* <button onClick={()=>console.log(puzzle)}>Click</button> */}
+
+      {/* Overlay on the Board while the game hasn't started yet or is paused */}
+      <div
+        className={`${style.overlay} ${
+          state.hasStarted && !state.isPaused ? null : `${style.overlayShow}`
+        }`}
+      >
+        {!state.hasStarted
+          ? "Press Start to Play!"
+          : state.isPaused
+          ? "Paused"
+          : ""}
+      </div>
     </div>
   );
 };

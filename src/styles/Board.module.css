@@ -9,6 +9,23 @@
   align-items: center;
   justify-items: center;
   background-color: white;
+  position: relative;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--darker);
+  place-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.overlayShow {
+  display: grid;
 }
 
 .disabled {
