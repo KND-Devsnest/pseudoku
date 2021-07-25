@@ -28,25 +28,34 @@ const Board = () => {
     [5, 0, 7, 6, 0, 0, 4, 0, 0],
   ]);
   function divideGrid(i, j) {
-    if (i === 0 && j > 0 && j < 8) {
-      return { borderTop: "0.25rem solid black" };
-    } else if (i === 0 && j === 0) {
+    if (
+      (i === 2 && j === 2) ||
+      (i === 5 && j === 5) ||
+      (i === 2 && j === 5) ||
+      (i === 5 && j === 2)
+    ) {
       return {
-        borderTop: "0.25rem solid black",
-        borderLeft: "0.25rem solid black",
-      };
-    } else if (i === 0 && j === 8) {
-      return {
-        borderTop: "0.25rem solid black",
+        borderBottom: "0.25rem solid black",
         borderRight: "0.25rem solid black",
       };
-    } else if (i < 8 && j === 0) {
-      return {
-        borderLeft: "0.25rem solid black",
-      };
     }
-    // else if ()
+    switch (i) {
+      case 2:
+      case 5:
+        return {
+          borderBottom: "0.25rem solid black",
+        };
+    }
+    switch (j) {
+      case 2:
+      case 5:
+        return {
+          borderRight: "0.25rem solid black",
+        };
+    }
   }
+  // else if ()
+
   // console.log(puzzle);
   const [isSelected, setSelected] = useState(false);
   return (
