@@ -42,6 +42,7 @@ const Board = () => {
                 setValue={(value) => {
                   setPuzzle((prevP) => {
                     prevP[i][j] = value;
+                    console.log(prevP);
                     return prevP;
                   });
                 }}

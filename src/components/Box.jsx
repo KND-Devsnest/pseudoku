@@ -5,11 +5,6 @@ const Box = ({ id, value, setValue }) => {
   const solution = useContext(BoardContext);
   const [isWrong, setWrong] = useState(false);
   const [i, j] = id.split(" ").map((el) => parseInt(el));
-  const checkValid = (value) => {
-    if (value <= 0) return 0;
-    else if (value > 9) return 9;
-    else return value;
-  };
   return (
     <div className={style.box}>
       {value !== 0 ? (
@@ -17,12 +12,30 @@ const Box = ({ id, value, setValue }) => {
       ) : (
         <input
           className={!isWrong ? style.inputbox : style.inputBoxWrong}
-          min={1}
-          max={9}
+          maxLength={1}
           type="number"
+          onKeyPress={(e) => {
+            if (
+              (e.which !== 8 && e.which !== 0 && e.which < 48) ||
+              e.which > 57 ||
+              e.which - 48 === e.target.value
+            ) {
+              e.preventDefault();
+            }
+          }}
           onChange={(e) => {
-            setValue(checkValid(parseInt(e.target.value)));
-            if (value === solution[i][j]) setWrong(false);
+            let val = e.target.value % 10;
+            let pval = Math.floor((e.target.value % 100) / 10);
+            console.log(pval);
+            if (!isNaN(val) && val > 0 && val !== pval) {
+              console.log(val);
+              setValue(parseInt(val));
+              e.target.value = val;
+            } else {
+              e.target.value = "";
+              setValue(0);
+            }
+            if (val === solution[i][j]) setWrong(false);
             else setWrong(true);
           }}
         />
