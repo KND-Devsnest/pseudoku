@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "../styles/Keypad.module.css";
 import { useState } from "react";
+import { GlobalContext } from "./GlobalContext";
 const Keypad = () => {
-  const [number, setNumber] = useState(null);
+  const {state} = useContext(GlobalContext);
+  console.log(state);
   const btnclicked = (x) => {
     // HERE you will get what number is pressed on the Keypad!!
-    console.log(x);
-    setNumber(x);
+    //console.log(x);
     // replace document with the board div
-    document.dispatchEvent(new KeyboardEvent('keypress',{key:x + ''}))
+    if(state && state.boardRef){
+      console.log('dispatched ',x);
+      // state.boardRef.current.dispatchEvent(new KeyboardEvent('keydown',{key:x + ''}));
+      
+      let nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+      nativeInputValueSetter.call(state.boardRef.current, x);
+      var ev2 = new Event('input', { bubbles: true});
+      state.boardRef.current.dispatchEvent(ev2);
+    }
   };
   let btns = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (

@@ -37,9 +37,9 @@ const useStopwatch = () => {
         var m = Math.floor(time % 3600 / 60);
         var s = Math.floor(time % 3600 % 60);
 
-        var hDisplay = h > 10 ? h : "0"+h;
-        var mDisplay = m > 10 ? m : "0"+m;
-        var sDisplay = s > 10 ? s : "0"+s;
+        var hDisplay = h >= 10 ? h : "0"+h;
+        var mDisplay = m >= 10 ? m : "0"+m;
+        var sDisplay = s >= 10 ? s : "0"+s;
         return hDisplay + ":" + mDisplay + ":" + sDisplay;
     }
 

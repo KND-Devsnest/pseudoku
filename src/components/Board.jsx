@@ -21,7 +21,7 @@ const Board = () => {
     [8, 3, 6, 4, 2, 5, 7, 1, 9],
     [5, 9, 7, 6, 1, 3, 4, 2, 8],
   ];
-  console.log(solution);
+  //console.log(solution);
   const [puzzle, setPuzzle] = useState([
     [0, 0, 5, 0, 0, 1, 6, 0, 2],
     [3, 0, 8, 2, 6, 0, 0, 0, 0],
@@ -35,6 +35,7 @@ const Board = () => {
   ]);
 
   const [isSelected, setSelected] = useState(false);
+  console.log(puzzle);
   return (
     <div ref={boardRef} className={style["sudoku-board"]}>
       <BoardContext.Provider

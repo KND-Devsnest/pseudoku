@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import style from "../styles/Toolbox.module.css";
 import { GlobalContext } from "./GlobalContext";
 import useStopwatch from "./useStopwatch";
-const Toolbox = () => {
+const Toolbox = ({stopwatch}) => {
 
-  const stopwatch = useStopwatch();
+
 
   const btnpressed = (x) => {
     console.log('start');
@@ -15,6 +15,8 @@ const Toolbox = () => {
       case 'pause':
         stopwatch.pause();
         break
+      case 'resume':
+        stopwatch.resume();
       case 'undo':
 
         break
@@ -31,16 +33,13 @@ const Toolbox = () => {
   const {state, dispatch} = useContext(GlobalContext);
   return (
     <div className={style.toolbox}>
-      <div className={style.stopwatch}>
-        {stopwatch.getInHours()}
-      </div>
       <div
         onClick={(e) => {
-          btnpressed(stopwatch.isStopwatchRunning ? "pause" : "start");
+          btnpressed(stopwatch.isStopwatchRunning? "pause" : (stopwatch.time > 0 ? "resume" : "start"));
         }}
         className={`${style.startbtn} ${style.cta} `}
       >
-        <h1>{stopwatch.isStopwatchRunning ? "Pause" : "Start"}</h1>
+        <h1>{stopwatch.isStopwatchRunning ? "Pause" : (stopwatch.time > 0 ? "Resume" : "Start")}</h1>
       </div>
       <div className={style.misc}>
         <div
