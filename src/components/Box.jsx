@@ -5,8 +5,8 @@ const Box = ({ id, value, setValue }) => {
   const { solution, isSelected, setSelected, puzzle } =
     useContext(BoardContext);
   const [isWrong, setWrong] = useState(false);
-  const classListHover = [style.inputbox, style.correct];
-  const classListWrong = [style.inputbox, style.incorrect];
+  let classListHover = [style.inputbox];
+  let classListWrong = [style.inputbox, style.incorrect];
   const [isConflict, setConflict] = useState(false);
   const [i, j] = id.split(" ").map((el) => parseInt(el));
   useEffect(() => {
@@ -36,18 +36,17 @@ const Box = ({ id, value, setValue }) => {
     isBoxSafe();
     console.log(puzzle);
   });
-  if (isConflict) console.log("test");
+  if (isSelected.i === i || isSelected.j === j || isSelected.value === value) {
+    classListHover = [style.inputbox, style.correct];
+  }
+
   return (
-    <div
-      className={
-        isSelected.i === i || isSelected.j === j || isSelected.value === value
-          ? style.boxSelect
-          : style.box
-      }
-    >
+    <div className={style.box}>
       {
         <input
-          className={isConflict ? style.incorrect : classListWrong.join(" ")}
+          className={
+            isConflict ? classListWrong.join(" ") : classListHover.join(" ")
+          }
           maxLength={1}
           type="number"
           value={value > 0 ? value : ""}

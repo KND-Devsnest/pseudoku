@@ -26,6 +26,7 @@
   caret-color: transparent;
 }
 .correct {
+  background-color: rgb(191, 205, 255);
   color: var(--blue);
 }
 .incorrect {
