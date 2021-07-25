@@ -6,7 +6,8 @@
 .box:nth-child(3n) {
   border-right: 2px solid rgb(0, 67, 143);
 }
-.inputbox {
+.inputbox,
+.inputBoxWrong {
   margin: 0;
   padding: none;
   outline: none;
@@ -15,4 +16,9 @@
   height: 2rem;
   background-color: rgb(223, 223, 223);
   box-sizing: border-box;
+  color: black;
+}
+.inputBoxWrong {
+  color: red;
+  background-color: rgba(206, 28, 28, 0.4);
 }
