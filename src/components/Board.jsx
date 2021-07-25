@@ -29,9 +29,10 @@ const Board = () => {
   ]);
 
   // console.log(puzzle);
+  const [isSelected, setSelected] = useState(false);
   return (
     <div className={style["sudoku-board"]}>
-      <BoardContext.Provider value={solution}>
+      <BoardContext.Provider value={{ isSelected, setSelected, solution }}>
         {puzzle.map((el, i) => {
           return el.map((value, j) => {
             return (

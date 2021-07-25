@@ -2,16 +2,32 @@ import React, { useContext, useState } from "react";
 import style from "../styles/Box.module.css";
 import { BoardContext } from "./BoardContext";
 const Box = ({ id, value, setValue }) => {
-  const solution = useContext(BoardContext);
+  const { solution, isSelected, setSelected } = useContext(BoardContext);
   const [isWrong, setWrong] = useState(false);
+  const xd = [style.inputBoxWrong, style.inputBoxSelect];
+  const [isConflict, setConflict] = useState(false);
   const [i, j] = id.split(" ").map((el) => parseInt(el));
+
+  if (isConflict) console.log("YES");
   return (
-    <div className={style.box}>
+    <div
+      className={
+        isSelected.i === i || isSelected.j === j || isSelected.value === value
+          ? style.boxSelect
+          : style.box
+      }
+    >
       {value !== 0 ? (
         value
       ) : (
         <input
-          className={!isWrong ? style.inputbox : style.inputBoxWrong}
+          className={
+            isSelected.i === i ||
+            isSelected.j === j ||
+            isSelected.value === value
+              ? style.inputBoxSelect
+              : style.inputbox
+          }
           maxLength={1}
           type="number"
           onKeyPress={(e) => {
@@ -37,6 +53,9 @@ const Box = ({ id, value, setValue }) => {
             }
             if (val === solution[i][j]) setWrong(false);
             else setWrong(true);
+            console.log(isSelected);
+
+            setSelected({ i: i, j: j, value: val !== 0 ? val : -1 });
           }}
         />
       )}

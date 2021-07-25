@@ -1,24 +1,32 @@
-.box {
+.box,
+.boxSelect {
   width: 2rem;
   height: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
 }
 .box:nth-child(3n) {
   border-right: 2px solid rgb(0, 67, 143);
 }
+.boxSelect {
+  background-color: #e0e7f0;
+}
 .inputbox,
-.inputBoxWrong {
+.inputBoxWrong,
+.inputBoxSelect {
   margin: 0;
   padding: none;
   outline: none;
   border: none;
   width: 2rem;
   height: 2rem;
-  background-color: rgb(223, 223, 223);
+  background-color: #fff;
   box-sizing: border-box;
   color: black;
 }
-.inputBoxWrong {
-  color: red;
+.inputBoxWrong.inputBoxSelect {
   background-color: rgba(206, 28, 28, 0.4);
+}
+.inputBoxSelect {
+  background-color: #e0e7f0;
 }
