@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import style from "../styles/Toolbox.module.css";
 import { GlobalContext } from "./GlobalContext";
-import useStopwatch from "./useStopwatch";
 const Toolbox = ({stopwatch}) => {
 
-
-
+  const {state} = useContext(GlobalContext);
   const btnpressed = (x) => {
-    console.log('start');
+    //console.log(x);
     switch(x){
       case 'start':
         stopwatch.start();
@@ -17,11 +15,12 @@ const Toolbox = ({stopwatch}) => {
         break
       case 'resume':
         stopwatch.resume();
+        break;
       case 'undo':
 
         break
       case 'reset':
-
+        if(state.resetPuzzle) state.resetPuzzle();
         break
       case 'hint':
 
@@ -30,7 +29,6 @@ const Toolbox = ({stopwatch}) => {
         break;
     }
   };
-  const {state, dispatch} = useContext(GlobalContext);
   return (
     <div className={style.toolbox}>
       <div

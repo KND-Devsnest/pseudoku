@@ -2,14 +2,15 @@ import { createContext, useReducer } from "react";
 
 export const GlobalContext = createContext();
 
-const initialState = {boardRef:null};
+const initialState = {boardRef:null,resetPuzzle:null};
 
 const globalReducer = (state=initialState, action) => {
     switch(action.type){
         case 'SET_BOARDREF':
-            console.log("setting");
+            //console.log("setting");
             return {...state, boardRef:action.value}
-        
+        case 'SET_RESET_PUZZLE':
+            return {...state, resetPuzzle:action.value}
         default:
             return state
     }

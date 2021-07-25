@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import style from "../styles/Box.module.css";
 import { BoardContext } from "./BoardContext";
 import { GlobalContext } from "./GlobalContext";
+
 const Box = ({ id, value, setValue, divideGrid }) => {
   const { solution, isSelected, setSelected, puzzle } =
     useContext(BoardContext);
   const boxRef = useRef();
-  const {dispatch} = useContext(GlobalContext);
-  const [isWrong, setWrong] = useState(false);
+  const { dispatch } = useContext(GlobalContext);
   let classListHover = [style.inputbox];
   let classListWrong = [style.inputbox, style.incorrect];
   const [isConflict, setConflict] = useState(false);
@@ -50,7 +50,7 @@ const Box = ({ id, value, setValue, divideGrid }) => {
         <input
           ref={boxRef}
           onFocus={() => {
-            dispatch({type:'SET_BOARDREF', value:boxRef});
+            dispatch({ type: "SET_BOARDREF", value: boxRef });
           }}
           className={
             isConflict ? classListWrong.join(" ") : classListHover.join(" ")
@@ -69,7 +69,6 @@ const Box = ({ id, value, setValue, divideGrid }) => {
             }
           }}
           onChange={(e) => {
-            console.log('chnge');
             let val = e.target.value % 10;
             let pval = Math.floor((e.target.value % 100) / 10);
 
@@ -80,8 +79,6 @@ const Box = ({ id, value, setValue, divideGrid }) => {
               e.target.value = "";
               setValue(0);
             }
-            if (val === solution[i][j]) setWrong(false);
-            else setWrong(true);
 
             setSelected({ i: i, j: j, value: val !== 0 ? val : -1 });
           }}
