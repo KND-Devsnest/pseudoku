@@ -1,7 +1,14 @@
 .Timetitle {
   font-weight: 600;
-  padding-right: 5vh;
+  padding-right: 3vh;
 }
 .timewrapper {
   display: flex;
+  padding-right: 3vh;
+}
+@media only screen and (max-width: 414px) {
+  .timedtool {
+    display: flex;
+    flex-direction: column;
+  }
 }

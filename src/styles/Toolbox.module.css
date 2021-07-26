@@ -58,7 +58,11 @@
   position: relative;
   z-index: 10;
 }
-
+@media only screen and (min-width: 414px) {
+  .toolbox {
+    padding-right: 0;
+  }
+}
 /* Positioning and visibility settings of the tooltip */
 [data-tooltip]:before,
 [data-tooltip]:after {

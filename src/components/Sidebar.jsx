@@ -7,11 +7,13 @@ const Sidebar = () => {
   const stopwatch = useStopwatch();
   return (
     <div className={style.sidebar}>
-      <div className={styles.timewrapper}>
-        <p className={styles.Timetitle}>Time</p>
-        <div className={style.stopwatch}>{stopwatch.getInHours()}</div>
+      <div className={styles.timedtool}>
+        <div className={styles.timewrapper}>
+          <p className={styles.Timetitle}>Time</p>
+          <div className={style.stopwatch}>{stopwatch.getInHours()}</div>
+        </div>
+        <Toolbox stopwatch={stopwatch} />
       </div>
-      <Toolbox stopwatch={stopwatch} />
       <Keypad />
     </div>
   );
