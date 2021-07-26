@@ -29,7 +29,7 @@
   padding-bottom: 0.6em;
   font-weight: 600;
 }
-.rulewrapper a:focus {
+.rulewrapper a:active {
   color: rgb(94, 94, 94);
   transform: translateX(1rem);
   transition-delay: 0.8ms;
