@@ -4,11 +4,10 @@ import style from "../styles/Main.module.css";
 import Keypad from "./Keypad";
 import Toolbox from "./Toolbox";
 import { GlobalProvider } from "./GlobalContext";
-import { data } from "../data/sudoku.json";
 import useStopwatch from "../utils/useStopwatch";
-const Main = () => {
+const Main = ({ randomElement }) => {
   const stopwatch = useStopwatch();
-  const randomElement = data[Math.floor(Math.random() * data.length)];
+
   return (
     <div className={style.main}>
       <GlobalProvider>
