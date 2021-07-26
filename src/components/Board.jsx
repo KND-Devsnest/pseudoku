@@ -18,7 +18,7 @@ const Board = ({ randomElement }) => {
   );
   const [isSelected, setSelected] = useState(false);
   const [done, setDone] = useState([]);
-  console.log(done);
+  // console.log(done);
   useEffect(() => {
     const undoPuzzle = () => {
       if (done.length === 0) return;
