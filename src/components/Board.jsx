@@ -8,6 +8,7 @@ import { divideGrid } from "../utils/divideGrid";
 const Board = ({ randomElement }) => {
   const { dispatch, state } = useContext(GlobalContext);
   const { hasStarted, isPaused } = state;
+  const [isFinished, setFinished] = useState(false);
   const boardRef = useRef();
   // useEffect(() => {
   //   dispatch({ type: "SET_BOARDREF", value: boardRef });
@@ -16,6 +17,19 @@ const Board = ({ randomElement }) => {
   const [puzzle, setPuzzle] = useState(
     JSON.parse(JSON.stringify(randomElement.puzzle))
   );
+  let temp = 0;
+  if (!isFinished) {
+    puzzle.forEach((i, row) => {
+      i.forEach((el, col) => {
+        if (el === solution[row][col]) temp++;
+        if (temp === 81) {
+          setFinished(true);
+          alert("You Won");
+        }
+      });
+    });
+  }
+  if (isFinished) console.log("YOU WON");
   const [isSelected, setSelected] = useState(false);
   const [done, setDone] = useState([]);
   // console.log(done);
