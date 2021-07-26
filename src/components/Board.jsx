@@ -34,6 +34,25 @@ const Board = ({ randomElement }) => {
   const [done, setDone] = useState([]);
   // console.log(done);
   useEffect(() => {
+    const Hint = () => {
+      let unguessed_number = [];
+      for (let i = 0; i < 9 && unguessed_number.length < 10; i++)
+        for (let j = 0; j < 9 && unguessed_number.length < 10; j++) {
+          if (puzzle[i][j] === 0) unguessed_number.push({ x: i, y: j, val: 0 });
+        }
+      const hint =
+        unguessed_number[Math.floor(Math.random() * unguessed_number.length)];
+      hint["solution"] = solution[hint.x][hint.y];
+      console.log(hint);
+      setDone((pDone) => {
+        return [...pDone, { x: hint.x, y: hint.y, val: hint.val }];
+      });
+      setPuzzle((prevP) => {
+        prevP[hint.x][hint.y] = hint.solution;
+        //console.log(prevP);
+        return prevP;
+      });
+    };
     const undoPuzzle = () => {
       if (done.length === 0) return;
       let { x, y, val } = done.pop();
@@ -56,6 +75,7 @@ const Board = ({ randomElement }) => {
       setDone([]);
     };
     dispatch({ type: "SET_RESET_PUZZLE", value: resetPuzzle });
+    dispatch({ type: "SET_HINT_PUZZLE", value: Hint });
     dispatch({ type: "SET_UNDO_PUZZLE", value: undoPuzzle });
   }, [dispatch, done, puzzle, randomElement.puzzle]);
 
