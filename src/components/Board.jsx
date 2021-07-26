@@ -49,13 +49,13 @@ const Board = ({ randomElement }) => {
       //console.log(prevP);
       setPuzzle(prevP);
     };
-    const resetPuzlle = () => {
+    const resetPuzzle = () => {
       //console.log(randomElement.puzzle);
       setPuzzle(JSON.parse(JSON.stringify(randomElement.puzzle)));
       setSelected(false);
       setDone([]);
     };
-    dispatch({ type: "SET_RESET_PUZZLE", value: resetPuzlle });
+    dispatch({ type: "SET_RESET_PUZZLE", value: resetPuzzle });
     dispatch({ type: "SET_UNDO_PUZZLE", value: undoPuzzle });
   }, [dispatch, done, puzzle, randomElement.puzzle]);
 
