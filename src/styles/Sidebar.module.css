@@ -1,0 +1,7 @@
+.Timetitle {
+  font-weight: 600;
+  padding-right: 5vh;
+}
+.timewrapper {
+  display: flex;
+}

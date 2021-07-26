@@ -1,4 +1,5 @@
 .box {
+  user-select: none;
   width: 3rem;
   height: 3rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -9,8 +10,9 @@
 }
 
 .inputbox {
-  font-family: "Caveat Brush", cursive;
+  user-select: none;
   font-size: 1.5rem;
+  font-weight: 600;
   margin: 0;
   padding: 0;
   outline: 0;
@@ -36,6 +38,7 @@
 .incorrect.correct,
 .incorrect.locked {
   color: var(--red);
+  background-color: rgba(211, 108, 108, 0.555);
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

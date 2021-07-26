@@ -44,6 +44,7 @@ const Toolbox = ({ stopwatch }) => {
   return (
     <div className={style.toolbox}>
       <div
+        tooltip="Press To Start"
         onClick={(e) => {
           btnpressed(
             stopwatch.isStopwatchRunning
@@ -65,6 +66,8 @@ const Toolbox = ({ stopwatch }) => {
       </div>
       <div className={style.misc}>
         <div
+          data-tooltip="Undo"
+          data-tooltip-location="bottom"
           onClick={(e) => {
             btnpressed("undo");
           }}
@@ -87,6 +90,8 @@ const Toolbox = ({ stopwatch }) => {
           </svg>
         </div>
         <div
+          data-tooltip="Reset"
+          data-tooltip-location="bottom"
           onClick={(e) => {
             btnpressed("reset");
           }}
@@ -109,6 +114,8 @@ const Toolbox = ({ stopwatch }) => {
           </svg>
         </div>
         <div
+          data-tooltip="Hint"
+          data-tooltip-location="bottom"
           onClick={(e) => {
             btnpressed("hint");
           }}

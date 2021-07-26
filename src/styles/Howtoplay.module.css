@@ -2,7 +2,7 @@
   margin: 0;
 }
 .wrapper {
-  min-height: 60vh;
+  min-height: 85vh;
   margin-bottom: 1.5rem;
 }
 .wrapper h1 {
@@ -30,6 +30,7 @@
   color: rgb(94, 94, 94);
   transition-delay: 0.8ms;
 }
+
 .contentwrapper {
   width: fit-content;
   height: fit-content;
@@ -44,9 +45,18 @@
   -o-animation: fadeIn 3s;
   -ms-animation: fadeIn 3s;
 }
+.separator {
+  border-left: 1px solid rgb(150, 150, 150);
+  margin-top: 5vh;
+  height: inherit;
+}
 @media only screen and (max-width: 768px) {
   .howtoplay {
+    flex-direction: column;
     width: 80%;
+  }
+  .separator {
+    display: none;
   }
 }
 @keyframes fadeIn {

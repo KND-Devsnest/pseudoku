@@ -1,4 +1,5 @@
 .sudoku-board {
+  user-select: none;
   width: fit-content;
   height: fit-content;
   display: grid;

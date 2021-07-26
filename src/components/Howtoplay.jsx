@@ -21,6 +21,7 @@ const Howtoplay = () => {
             </p>
           ))}
         </div>
+        <div className={style.separator}></div>
         <div className={style.contentwrapper}>{content}</div>
       </div>
     </div>
