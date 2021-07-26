@@ -12,13 +12,14 @@ const Howtoplay = () => {
       <div className={style.howtoplay}>
         <div className={style.rulewrapper}>
           {rules.map((element, inx) => (
-            <p
+            <a
+              href="#1"
               key={inx}
               className="unordered"
               onClick={(e) => setContent(element.content)}
             >
               {element.text}
-            </p>
+            </a>
           ))}
         </div>
         <div className={style.separator}></div>

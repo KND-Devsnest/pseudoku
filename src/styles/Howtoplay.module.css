@@ -23,16 +23,19 @@
   padding-right: 2em;
   cursor: pointer;
 }
-.rulewrapper p {
+.rulewrapper a {
+  color: black;
+  text-decoration: none;
   padding-bottom: 0.6em;
   font-weight: 600;
 }
-.rulewrapper p:hover {
+.rulewrapper a:focus {
   color: rgb(94, 94, 94);
   transform: translateX(1rem);
   transition-delay: 0.8ms;
   animation: forwards 1s;
 }
+
 .contentwrapper {
   width: fit-content;
   height: fit-content;
