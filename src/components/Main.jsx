@@ -1,22 +1,15 @@
 import React from "react";
 import Board from "./Board";
 import style from "../styles/Main.module.css";
-import Keypad from "./Keypad";
-import Toolbox from "./Toolbox";
 import { GlobalProvider } from "./GlobalContext";
-import useStopwatch from "../utils/useStopwatch";
-const Main = ({ randomElement }) => {
-  const stopwatch = useStopwatch();
+import Sidebar from "./Sidebar";
 
+const Main = ({ randomElement }) => {
   return (
     <div className={style.main}>
       <GlobalProvider>
         <Board randomElement={randomElement} />
-        <div className={style.sidebar}>
-          <div className={style.stopwatch}>{stopwatch.getInHours()}</div>
-          <Toolbox stopwatch={stopwatch} />
-          <Keypad />
-        </div>
+        <Sidebar />
       </GlobalProvider>
     </div>
   );

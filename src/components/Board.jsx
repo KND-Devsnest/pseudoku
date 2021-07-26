@@ -18,7 +18,7 @@ const Board = ({ randomElement }) => {
   );
   const [isSelected, setSelected] = useState(false);
   const [done, setDone] = useState([]);
-  //console.log(done);
+  // console.log(done);
   useEffect(() => {
     const undoPuzzle = () => {
       if (done.length === 0) return;
@@ -39,6 +39,7 @@ const Board = ({ randomElement }) => {
       //console.log(randomElement.puzzle);
       setPuzzle(JSON.parse(JSON.stringify(randomElement.puzzle)));
       setSelected(false);
+      setDone([]);
     };
     dispatch({ type: "SET_RESET_PUZZLE", value: resetPuzlle });
     dispatch({ type: "SET_UNDO_PUZZLE", value: undoPuzzle });
