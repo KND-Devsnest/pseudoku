@@ -3,7 +3,7 @@ import style from "../styles/Box.module.css";
 import { BoardContext } from "./BoardContext";
 import { GlobalContext } from "./GlobalContext";
 
-const Box = ({ id, value, setValue, divideGrid }) => {
+const Box = ({ id, value, setValue, divideGrid, locked }) => {
   const { solution, isSelected, setSelected, puzzle } =
     useContext(BoardContext);
   const boxRef = useRef();
@@ -43,7 +43,10 @@ const Box = ({ id, value, setValue, divideGrid }) => {
     classListHover = [style.inputbox, style.correct];
     classListWrong = [style.inputbox, style.incorrect, style.correct];
   }
-
+  if (locked) {
+    classListHover.push(style.locked);
+    classListWrong.push(style.locked);
+  }
   return (
     <div className={style.box}>
       {
@@ -57,6 +60,7 @@ const Box = ({ id, value, setValue, divideGrid }) => {
           }
           maxLength={1}
           type="number"
+          disabled={locked}
           value={value > 0 ? value : ""}
           style={divideGrid(i, j)}
           onKeyPress={(e) => {

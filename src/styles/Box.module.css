@@ -25,12 +25,14 @@
   background-color: rgb(191, 205, 255);
   caret-color: transparent;
 }
+.locked.correct,
 .correct {
   background-color: rgb(191, 205, 255);
   color: var(--blue);
 }
 .incorrect,
-.incorrect.correct {
+.incorrect.correct,
+.incorrect.locked {
   color: var(--red);
 }
 /* Chrome, Safari, Edge, Opera */
@@ -38,6 +40,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.locked {
+  background-color: var(--stillblue);
 }
 
 /* Firefox */

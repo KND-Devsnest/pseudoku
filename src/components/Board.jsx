@@ -44,7 +44,7 @@ const Board = ({ randomElement }) => {
     dispatch({ type: "SET_UNDO_PUZZLE", value: undoPuzzle });
   }, [dispatch, done, puzzle, randomElement.puzzle]);
 
-  //console.log(puzzle);
+  console.log(puzzle);
   return (
     <div
       ref={boardRef}
@@ -63,6 +63,7 @@ const Board = ({ randomElement }) => {
                 id={`${i} ${j}`}
                 value={puzzle[i][j]}
                 divideGrid={divideGrid}
+                locked={randomElement.puzzle[i][j] !== 0}
                 setValue={(value, prevVal) => {
                   setDone((pDone) => {
                     return [...pDone, { x: i, y: j, val: prevVal }];
