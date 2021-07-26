@@ -44,7 +44,7 @@ const Board = ({ randomElement }) => {
     dispatch({ type: "SET_UNDO_PUZZLE", value: undoPuzzle });
   }, [dispatch, done, puzzle, randomElement.puzzle]);
 
-  console.log(puzzle);
+  // console.log(puzzle);
   return (
     <div
       ref={boardRef}
