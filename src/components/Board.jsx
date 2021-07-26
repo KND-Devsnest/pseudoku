@@ -10,6 +10,11 @@ const Board = ({ randomElement }) => {
   const { hasStarted, isPaused } = state;
   const [isFinished, setFinished] = useState(false);
   const boardRef = useRef();
+  const firefoxRef = useRef(false);
+
+  useEffect(() => {
+    firefoxRef.current = window.navigator.userAgent.indexOf("Firefox") > -1;
+  }, []);
   // useEffect(() => {
   //   dispatch({ type: "SET_BOARDREF", value: boardRef });
   // }, [boardRef, dispatch]);
@@ -65,7 +70,7 @@ const Board = ({ randomElement }) => {
       ref={boardRef}
       className={`${style["sudoku-board"]} ${
         hasStarted && !isPaused ? null : `${style.disabled}`
-      }`}
+      } ${firefoxRef.current ? `${style.forFirefox}` : null}`}
     >
       <BoardContext.Provider
         value={{ isSelected, setSelected, solution, puzzle }}
@@ -100,9 +105,12 @@ const Board = ({ randomElement }) => {
       {/* Overlay on the Board while the game hasn't started yet or is paused */}
       <div
         className={`${style.overlay} ${
-          state.hasStarted && !state.isPaused ? null : `${style.overlayShow}`
+          state.hasStarted && !state.isPaused
+            ? null
+            : `${firefoxRef ? `${style.forFirefox}` : `${style.overlayShow}`}`
         }`}
       >
+        {console.log(firefoxRef.current)}
         {!state.hasStarted
           ? "Press Start to Play!"
           : state.isPaused
