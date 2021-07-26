@@ -27,7 +27,15 @@ const Toolbox = ({ stopwatch }) => {
         if (state.resetPuzzle) state.resetPuzzle();
         break;
       case "hint":
-        if (!state.hasStarted || state.isPaused) return;
+        if (!state.hasStarted || state.isPaused || state.hintDisabled) return;
+        if (state.hint) state.hint();
+        stopwatch.changeTime(stopwatch.time + 20);
+        //console.log("disabled");
+        dispatch({ type: "SET_HINT_DISABLED", value: true });
+        setTimeout(() => {
+          //console.log("enabled");
+          dispatch({ type: "SET_HINT_DISABLED", value: false });
+        }, 10000);
         break;
       default:
         break;
@@ -112,7 +120,7 @@ const Toolbox = ({ stopwatch }) => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
+            stroke={state.hintDisabled ? "#E50914" : "currentColor"}
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

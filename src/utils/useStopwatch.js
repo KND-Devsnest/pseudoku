@@ -45,7 +45,19 @@ const useStopwatch = () => {
     return hDisplay + ":" + mDisplay + ":" + sDisplay;
   };
 
-  return { time, start, stop, pause, resume, getInHours, isStopwatchRunning };
+  const changeTime = (newTime) => {
+    setTime(newTime);
+  };
+  return {
+    time,
+    start,
+    stop,
+    pause,
+    resume,
+    getInHours,
+    changeTime,
+    isStopwatchRunning,
+  };
 };
 
 export default useStopwatch;
