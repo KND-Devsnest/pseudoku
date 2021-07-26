@@ -110,7 +110,6 @@ const Board = ({ randomElement }) => {
             : `${firefoxRef ? `${style.forFirefox}` : `${style.overlayShow}`}`
         }`}
       >
-        {console.log(firefoxRef.current)}
         {!state.hasStarted
           ? "Press Start to Play!"
           : state.isPaused
