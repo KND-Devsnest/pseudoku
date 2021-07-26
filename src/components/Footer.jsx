@@ -5,21 +5,20 @@ const Footer = () => {
     <div className={style.footer}>
       <div className={style.leftbox}>
         <h2>About</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p>This is a webapp created using react, by KND Team.</p>
       </div>
       <div className={style.leftbox}>
-        <h2>Team KND</h2>
-        <a href="#cta">
-          <p>Github</p>
-        </a>
+        <h2>Github</h2>
+
+        <p>
+          <a href="https://github.com/KND-Devsnest">Team KND</a>
+        </p>
+        <a href="https://github.com/destro1108">D3STRO</a>
+        <a href="https://github.com/iHatePhysics">iHatePhysics</a>
+        <a href="https://github.com/seebham">Keybored</a>
+        <a href="https://github.com/aguyran">Soap</a>
+        <a href="https://github.com/kaushikvrudhula">Flagged</a>
+        <a href="https://github.com/Ritik947">TrickyMind</a>
       </div>
     </div>
   );
